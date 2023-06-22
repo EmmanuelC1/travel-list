@@ -1,8 +1,14 @@
 import { useState } from 'react';
 import Item from './Item';
 import Sort from './Sort';
+import Clear from './Clear';
 
-export default function PackingList({ items, onDeleteItem, onToggleItem }) {
+export default function PackingList({
+  items,
+  onDeleteItem,
+  onToggleItem,
+  onClearList,
+}) {
   const [sortBy, setSortBy] = useState('input');
 
   const sortedItems =
@@ -28,7 +34,10 @@ export default function PackingList({ items, onDeleteItem, onToggleItem }) {
         ))}
       </ul>
 
-      <Sort sortBy={sortBy} setSortBy={setSortBy} />
+      <div className="actions">
+        <Sort sortBy={sortBy} setSortBy={setSortBy} />
+        <Clear onClearList={onClearList} />
+      </div>
     </div>
   );
 }
